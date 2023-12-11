@@ -1,0 +1,256 @@
+#! /usr/share/iverilog-0.9.7/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_6)";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x11566b0 .scope module, "tb_alu" "tb_alu" 2 3;
+ .timescale -9 -12;
+v0x1193560_0 .var "A", 7 0;
+v0x1193600_0 .net "ALU_Out", 7 0, v0x1192ec0_0; 1 drivers
+v0x11936b0_0 .var "ALU_Sel", 3 0;
+v0x1193760_0 .var "B", 7 0;
+v0x1193840_0 .net "CarryOut", 0 0, L_0x1193ee0; 1 drivers
+v0x11938f0_0 .var/i "i", 31 0;
+S_0x117e520 .scope module, "test_unit" "alu" 2 13, 3 1, S_0x11566b0;
+ .timescale 0 0;
+v0x117e610_0 .net "A", 7 0, v0x1193560_0; 1 drivers
+v0x1192e20_0 .alias "ALU_Out", 7 0, v0x1193600_0;
+v0x1192ec0_0 .var "ALU_Result", 7 0;
+v0x1192f60_0 .net "ALU_Sel", 3 0, v0x11936b0_0; 1 drivers
+v0x1193010_0 .net "B", 7 0, v0x1193760_0; 1 drivers
+v0x11930b0_0 .alias "CarryOut", 0 0, v0x1193840_0;
+v0x1193190_0 .net *"_s2", 0 0, C4<0>; 1 drivers
+v0x1193230_0 .net *"_s4", 8 0, L_0x1193a10; 1 drivers
+v0x1193320_0 .net *"_s6", 0 0, C4<0>; 1 drivers
+v0x11933c0_0 .net *"_s8", 8 0, L_0x1193bc0; 1 drivers
+v0x11934c0_0 .net "tmp", 8 0, L_0x1193d00; 1 drivers
+E_0x116b370 .event edge, v0x1192f60_0, v0x117e610_0, v0x1193010_0;
+L_0x1193a10 .concat [ 8 1 0 0], v0x1193560_0, C4<0>;
+L_0x1193bc0 .concat [ 8 1 0 0], v0x1193760_0, C4<0>;
+L_0x1193d00 .arith/sum 9, L_0x1193a10, L_0x1193bc0;
+L_0x1193ee0 .part L_0x1193d00, 8, 1;
+    .scope S_0x117e520;
+T_0 ;
+    %wait E_0x116b370;
+    %load/v 8, v0x1192f60_0, 4;
+    %cmpi/u 8, 0, 4;
+    %jmp/1 T_0.0, 6;
+    %cmpi/u 8, 1, 4;
+    %jmp/1 T_0.1, 6;
+    %cmpi/u 8, 2, 4;
+    %jmp/1 T_0.2, 6;
+    %cmpi/u 8, 3, 4;
+    %jmp/1 T_0.3, 6;
+    %cmpi/u 8, 4, 4;
+    %jmp/1 T_0.4, 6;
+    %cmpi/u 8, 5, 4;
+    %jmp/1 T_0.5, 6;
+    %cmpi/u 8, 6, 4;
+    %jmp/1 T_0.6, 6;
+    %cmpi/u 8, 7, 4;
+    %jmp/1 T_0.7, 6;
+    %cmpi/u 8, 8, 4;
+    %jmp/1 T_0.8, 6;
+    %cmpi/u 8, 9, 4;
+    %jmp/1 T_0.9, 6;
+    %cmpi/u 8, 10, 4;
+    %jmp/1 T_0.10, 6;
+    %cmpi/u 8, 11, 4;
+    %jmp/1 T_0.11, 6;
+    %cmpi/u 8, 12, 4;
+    %jmp/1 T_0.12, 6;
+    %cmpi/u 8, 13, 4;
+    %jmp/1 T_0.13, 6;
+    %cmpi/u 8, 14, 4;
+    %jmp/1 T_0.14, 6;
+    %cmpi/u 8, 15, 4;
+    %jmp/1 T_0.15, 6;
+    %load/v 8, v0x117e610_0, 8;
+    %load/v 16, v0x1193010_0, 8;
+    %add 8, 16, 8;
+    %set/v v0x1192ec0_0, 8, 8;
+    %jmp T_0.17;
+T_0.0 ;
+    %load/v 8, v0x117e610_0, 8;
+    %load/v 16, v0x1193010_0, 8;
+    %add 8, 16, 8;
+    %set/v v0x1192ec0_0, 8, 8;
+    %jmp T_0.17;
+T_0.1 ;
+    %load/v 8, v0x117e610_0, 8;
+    %load/v 16, v0x1193010_0, 8;
+    %sub 8, 16, 8;
+    %set/v v0x1192ec0_0, 8, 8;
+    %jmp T_0.17;
+T_0.2 ;
+    %load/v 8, v0x117e610_0, 8;
+    %load/v 16, v0x1193010_0, 8;
+    %mul 8, 16, 8;
+    %set/v v0x1192ec0_0, 8, 8;
+    %jmp T_0.17;
+T_0.3 ;
+    %load/v 8, v0x117e610_0, 8;
+    %load/v 16, v0x1193010_0, 8;
+    %div 8, 16, 8;
+    %set/v v0x1192ec0_0, 8, 8;
+    %jmp T_0.17;
+T_0.4 ;
+    %load/v 8, v0x117e610_0, 8;
+    %ix/load 0, 1, 0;
+    %mov 4, 0, 1;
+    %shiftl/i0  8, 8;
+    %set/v v0x1192ec0_0, 8, 8;
+    %jmp T_0.17;
+T_0.5 ;
+    %load/v 8, v0x117e610_0, 8;
+    %ix/load 0, 1, 0;
+    %mov 4, 0, 1;
+    %shiftr/i0  8, 8;
+    %set/v v0x1192ec0_0, 8, 8;
+    %jmp T_0.17;
+T_0.6 ;
+    %ix/load 1, 7, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_0.18, 4;
+    %load/x1p 16, v0x117e610_0, 1;
+    %jmp T_0.19;
+T_0.18 ;
+    %mov 16, 2, 1;
+T_0.19 ;
+    %mov 8, 16, 1; Move signal select into place
+    %load/v 9, v0x117e610_0, 7; Select 7 out of 8 bits
+    %set/v v0x1192ec0_0, 8, 8;
+    %jmp T_0.17;
+T_0.7 ;
+    %ix/load 1, 1, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_0.20, 4;
+    %load/x1p 16, v0x117e610_0, 7;
+    %jmp T_0.21;
+T_0.20 ;
+    %mov 16, 2, 7;
+T_0.21 ;
+    %mov 8, 16, 7; Move signal select into place
+    %load/v 15, v0x117e610_0, 1; Select 1 out of 8 bits
+    %set/v v0x1192ec0_0, 8, 8;
+    %jmp T_0.17;
+T_0.8 ;
+    %load/v 8, v0x117e610_0, 8;
+    %load/v 16, v0x1193010_0, 8;
+    %and 8, 16, 8;
+    %set/v v0x1192ec0_0, 8, 8;
+    %jmp T_0.17;
+T_0.9 ;
+    %load/v 8, v0x117e610_0, 8;
+    %load/v 16, v0x1193010_0, 8;
+    %or 8, 16, 8;
+    %set/v v0x1192ec0_0, 8, 8;
+    %jmp T_0.17;
+T_0.10 ;
+    %load/v 8, v0x117e610_0, 8;
+    %load/v 16, v0x1193010_0, 8;
+    %xor 8, 16, 8;
+    %set/v v0x1192ec0_0, 8, 8;
+    %jmp T_0.17;
+T_0.11 ;
+    %load/v 8, v0x117e610_0, 8;
+    %load/v 16, v0x1193010_0, 8;
+    %or 8, 16, 8;
+    %inv 8, 8;
+    %set/v v0x1192ec0_0, 8, 8;
+    %jmp T_0.17;
+T_0.12 ;
+    %load/v 8, v0x117e610_0, 8;
+    %load/v 16, v0x1193010_0, 8;
+    %and 8, 16, 8;
+    %inv 8, 8;
+    %set/v v0x1192ec0_0, 8, 8;
+    %jmp T_0.17;
+T_0.13 ;
+    %load/v 8, v0x117e610_0, 8;
+    %load/v 16, v0x1193010_0, 8;
+    %xor 8, 16, 8;
+    %inv 8, 8;
+    %set/v v0x1192ec0_0, 8, 8;
+    %jmp T_0.17;
+T_0.14 ;
+    %load/v 8, v0x1193010_0, 8;
+    %load/v 16, v0x117e610_0, 8;
+    %cmp/u 8, 16, 8;
+    %mov 8, 5, 1;
+    %jmp/0  T_0.22, 8;
+    %movi 9, 1, 8;
+    %jmp/1  T_0.24, 8;
+T_0.22 ; End of true expr.
+    %jmp/0  T_0.23, 8;
+ ; End of false expr.
+    %blend  9, 0, 8; Condition unknown.
+    %jmp  T_0.24;
+T_0.23 ;
+    %mov 9, 0, 8; Return false value
+T_0.24 ;
+    %set/v v0x1192ec0_0, 9, 8;
+    %jmp T_0.17;
+T_0.15 ;
+    %load/v 8, v0x117e610_0, 8;
+    %load/v 16, v0x1193010_0, 8;
+    %cmp/u 8, 16, 8;
+    %mov 8, 4, 1;
+    %jmp/0  T_0.25, 8;
+    %movi 9, 1, 8;
+    %jmp/1  T_0.27, 8;
+T_0.25 ; End of true expr.
+    %jmp/0  T_0.26, 8;
+ ; End of false expr.
+    %blend  9, 0, 8; Condition unknown.
+    %jmp  T_0.27;
+T_0.26 ;
+    %mov 9, 0, 8; Return false value
+T_0.27 ;
+    %set/v v0x1192ec0_0, 9, 8;
+    %jmp T_0.17;
+T_0.17 ;
+    %jmp T_0;
+    .thread T_0, $push;
+    .scope S_0x11566b0;
+T_1 ;
+    %movi 8, 10, 8;
+    %set/v v0x1193560_0, 8, 8;
+    %movi 8, 2, 8;
+    %set/v v0x1193760_0, 8, 8;
+    %set/v v0x11936b0_0, 0, 4;
+    %set/v v0x11938f0_0, 0, 32;
+T_1.0 ;
+    %load/v 8, v0x11938f0_0, 32;
+   %cmpi/s 8, 15, 32;
+    %or 5, 4, 1;
+    %jmp/0xz T_1.1, 5;
+    %load/v 8, v0x11936b0_0, 4;
+    %mov 12, 0, 4;
+    %addi 8, 1, 8;
+    %set/v v0x11936b0_0, 8, 4;
+    %delay 10000, 0;
+    %ix/load 0, 1, 0;
+    %load/vp0/s 8, v0x11938f0_0, 32;
+    %set/v v0x11938f0_0, 8, 32;
+    %jmp T_1.0;
+T_1.1 ;
+    %movi 8, 246, 8;
+    %set/v v0x1193560_0, 8, 8;
+    %movi 8, 10, 8;
+    %set/v v0x1193760_0, 8, 8;
+    %end;
+    .thread T_1;
+    .scope S_0x11566b0;
+T_2 ;
+    %vpi_call 2 36 "$dumpfile", "dump.vcd";
+    %vpi_call 2 37 "$dumpvars", 1'sb0;
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "testbench.sv";
+    "design.sv";
